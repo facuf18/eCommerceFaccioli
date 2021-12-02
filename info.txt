@@ -1,8 +1,0 @@
-JSX: Es una extension de JS que permite crear componentes de forma sencilla parecida a HTML
-
-COMPONENTES: Es una funcion que siempre tiene retorno, ya que su funcion principal es dibujar un elemento en pantalla
-
-function foo () {}
-
-const foo = () => {}
-

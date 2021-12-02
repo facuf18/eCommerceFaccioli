@@ -1,10 +1,9 @@
-import Header from "./Header";
+import NavBar from "./components/NavBar";
 
-function App() {
+const App = () => {
     return (
         <>
-            <Header/>
-            <main>Soy main</main>
+            <NavBar/>
         </>
     );
 }
