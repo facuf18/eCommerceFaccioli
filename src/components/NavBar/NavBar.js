@@ -1,11 +1,11 @@
 import { CartWidget } from "./CartWidget";
-import "../css/navbar.css";
+import "../../css/navbar.css";
 
 const NavBar = () => {
     return (
         <nav className="navbar navbar-light navbar-expand-lg bg-light">
             <div className="container-fluid">
-                <a class="navbar-brand tituloCommerce" href="index.html">
+                <a className="navbar-brand tituloCommerce" href="index.html">
                     <img src="/logoColor.png" width="130" height="auto" className="d-inline-block align-center" alt="logo"/>
                 </a>
                 <div className="navbar-nav">
