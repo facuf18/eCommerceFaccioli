@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const ItemCount = ({stock, initial, onAdd}) => {
 
-    let [contador, setContador] = useState(1);
+    let [contador, setContador] = useState(initial);
 
     const sumar = () => {
         if (contador < stock) {
@@ -16,6 +16,11 @@ export const ItemCount = ({stock, initial, onAdd}) => {
         }
     }
 
+    const onAddItemCount = () => {
+        onAdd ();
+        setContador (initial);
+    }
+
     return (
         <div className="container">   
             <div className="card col-lg-3">
@@ -26,7 +31,7 @@ export const ItemCount = ({stock, initial, onAdd}) => {
                         <button className="btn btn-outline-danger" onClick={sumar}>+</button>
                     </div>
                     <div>
-                        <button type="submit" className="btn btn-danger mt-2" onClick={onAdd}>Agregar al carrito</button>
+                        <button type="submit" className="btn btn-danger mt-2" onClick={onAddItemCount}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>
