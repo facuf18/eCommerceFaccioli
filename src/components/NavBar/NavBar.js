@@ -9,11 +9,11 @@ const NavBar = () => {
                     <img src="/logoColor.png" width="130" height="auto" className="d-inline-block align-center" alt="logo"/>
                 </a>
                 <div className="navbar-nav">
-                    <a href="#" className="nav-link">Procesadores</a>
-                    <a href="#" className="nav-link">Motherboards</a>
-                    <a href="#" className="nav-link">Memorias Ram</a>
-                    <a href="#" className="nav-link">Almacenamiento</a>
-                    <a href="#" className="nav-link">Placas de video</a>
+                    <a href="." className="nav-link">Procesadores</a>
+                    <a href="." className="nav-link">Motherboards</a>
+                    <a href="." className="nav-link">Memorias Ram</a>
+                    <a href="." className="nav-link">Almacenamiento</a>
+                    <a href="." className="nav-link">Placas de video</a>
                 </div>
                 <CartWidget/>
             </div>
