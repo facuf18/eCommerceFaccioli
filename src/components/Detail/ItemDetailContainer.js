@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import ItemList from "./ItemList";
+import { useState, useEffect } from "react"
+import ItemDetail from "./ItemDetail"
 
 const arrItems = [
     {
@@ -44,32 +44,29 @@ const arrItems = [
     }
 ]
 
-const promesa = () => {
+const getItem = () => {
     return new Promise((resolve) => {
-        setTimeout(() => resolve(arrItems), 2000)
+        setTimeout(() => resolve(arrItems[2]), 2000)
     })
 }
 
+const ItemDetailContainer = () => {
 
-const ItemListContainer = (props) => {
-
-    const {greeting} = props;
-
-    const [items, setItems] = useState([]);
+    const [producto, setProducto] = useState({});
 
     useEffect(() => {
-        promesa().then((data) => {
-            setItems(data);
+        getItem().then((data) => {
+            setProducto(data);
             console.log("todo ok")
         })
     }, []);
 
+
     return (
-        <div className="container">
-            <h1 className="text-center">{greeting}</h1>
-            <ItemList productos={items}/>
+        <div className="container d-flex justify-content-center">
+            <ItemDetail producto={producto}/>
         </div>
     )
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer
