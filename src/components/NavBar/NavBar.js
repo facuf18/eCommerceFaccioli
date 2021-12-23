@@ -1,21 +1,22 @@
 import { CartWidget } from "./CartWidget";
-import "../../css/navbar.css";
+import "./navbar.css"
+import { NavLink } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({links}) => {
     return (
-        <nav className="navbar navbar-light navbar-expand-lg bg-light">
+        <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand tituloCommerce" href="index.html">
+                <NavLink to="/">
                     <img src="/logoColor.png" width="130" height="auto" className="d-inline-block align-center" alt="logo"/>
-                </a>
-                <div className="navbar-nav">
-                    <a href="." className="nav-link">Procesadores</a>
-                    <a href="." className="nav-link">Motherboards</a>
-                    <a href="." className="nav-link">Memorias Ram</a>
-                    <a href="." className="nav-link">Almacenamiento</a>
-                    <a href="." className="nav-link">Placas de video</a>
+                </NavLink>
+                <div className="navbar-nav nav">
+                    {links.map((link) => {
+                        return <NavLink key={link.id} to={link.href} className="nav-link linkNav">{link.name}</NavLink>
+                    })}
+                    <NavLink className="linkNav" to="/carrito">
+                        <CartWidget/>
+                    </NavLink>
                 </div>
-                <CartWidget/>
             </div>
         </nav>
     );

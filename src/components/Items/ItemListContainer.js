@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
 
 const arrItems = [
     {
@@ -30,14 +31,6 @@ const arrItems = [
         id: 4,
         categoria: "Placa de Video",
         marca: "MSI",
-        modelo: "RADEON RX 6900 XT GAMING Z TRIO 16GB",
-        precio: 328999,
-        img: "https://i.postimg.cc/Z9MvkSBG/msirx6900.png"
-    },
-    {
-        id: 5,
-        categoria: "Placa de Video",
-        marca: "MSI",
         modelo: "GEFORCE RTX 3080 VENTUS 3X 10GB",
         precio: 369999,
         img: "https://i.postimg.cc/Pp0DDjdW/msi3080ventus.jpg"
@@ -50,23 +43,20 @@ const promesa = () => {
     })
 }
 
-
-const ItemListContainer = (props) => {
-
-    const {greeting} = props;
+const ItemListContainer = () => {
 
     const [items, setItems] = useState([]);
+    const { id } = useParams();
 
     useEffect(() => {
         promesa().then((data) => {
             setItems(data);
             console.log("todo ok")
         })
-    }, []);
+    }, [id]);
 
     return (
         <div className="container">
-            <h1 className="text-center">{greeting}</h1>
             <ItemList productos={items}/>
         </div>
     )

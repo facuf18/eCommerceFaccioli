@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import ItemDetail from "./ItemDetail"
+import { useParams } from "react-router-dom"
 
 const arrItems = [
     {
@@ -30,38 +31,34 @@ const arrItems = [
         id: 4,
         categoria: "Placa de Video",
         marca: "MSI",
-        modelo: "RADEON RX 6900 XT GAMING Z TRIO 16GB",
-        precio: 328999,
-        img: "https://i.postimg.cc/Z9MvkSBG/msirx6900.png"
-    },
-    {
-        id: 5,
-        categoria: "Placa de Video",
-        marca: "MSI",
         modelo: "GEFORCE RTX 3080 VENTUS 3X 10GB",
         precio: 369999,
         img: "https://i.postimg.cc/Pp0DDjdW/msi3080ventus.jpg"
     }
 ]
 
-const getItem = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(arrItems[2]), 2000)
-    })
-}
-
 const ItemDetailContainer = () => {
 
     const [producto, setProducto] = useState({});
+    const { id } = useParams();
+
+    const getItem = (id) => {
+
+        const item = arrItems.find(item => (item.id).toString() === id) 
+        
+        return new Promise((resolve) => {
+        setTimeout(() => resolve(item), 2000)
+    })
+}
 
     useEffect(() => {
-        getItem().then((data) => {
+        getItem(id).then((data) => {
             setProducto(data);
             console.log("todo ok")
         })
-    }, []);
+    }, [id]);
 
-
+    console.log(producto)
     return (
         <div className="container d-flex justify-content-center">
             <ItemDetail producto={producto}/>

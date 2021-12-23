@@ -1,4 +1,5 @@
 import ItemCount from "../Items/ItemCount"
+import "./itemDetail.css"
 
 const ItemDetail = ({producto}) => {
 
@@ -10,7 +11,7 @@ const ItemDetail = ({producto}) => {
         <div className="card col-lg-8">
             <div className="row g-0">
                 <div className="col-md-4">
-                    <img src={producto.img} className="img-fluid rounded-start" alt="grafica"/>
+                    <img src={producto.img} className="rounded-start img-card" alt="grafica"/>
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">

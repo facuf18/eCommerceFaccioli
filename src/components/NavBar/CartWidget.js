@@ -2,8 +2,8 @@ import { BsFillCartFill } from 'react-icons/bs';
 
 export const CartWidget = () => {
     return (
-        <h3>
+        <h4 className="nav-link cartIcon">
             <BsFillCartFill/> 
-        </h3>
+        </h4>
     );
 }

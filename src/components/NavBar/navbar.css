@@ -1,0 +1,14 @@
+.tituloCommerce {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.linkNav {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
