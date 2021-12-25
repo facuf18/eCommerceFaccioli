@@ -1,0 +1,9 @@
+.counterButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.agregarButton {
+  margin-left: -10rem;
+}

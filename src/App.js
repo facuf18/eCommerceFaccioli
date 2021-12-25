@@ -12,8 +12,10 @@ const App = () => {
 
     const links = [
         {id:1, name:"Productos", href:"/productos"},
-        {id:2, name:"Nosotros", href:"/nosotros"},
-        {id:3, name:"Contacto", href:"/contacto"}
+        {id:2, name:"MSI", href:"/marca/msi"},
+        {id:3, name:"PALIT", href:"/marca/palit"},
+        {id:4, name:"Nosotros", href:"/nosotros"},
+        {id:5, name:"Contacto", href:"/contacto"}
     ]
 
 
@@ -25,6 +27,7 @@ const App = () => {
                     <Route path="/" element={<Home greeting={"Bienvenido a Solo Leveling Components"} />} /> 
                     <Route path="/productos" element={<ItemListContainer />} />
                     <Route path="/producto/:id" element={<ItemDetailContainer />} />
+                    <Route path="/marca/:marca" element={<ItemListContainer />} />
                     <Route path="/nosotros" element={<Nosotros />} />
                     <Route path="/contacto" element={<Contacto />} />
                     <Route path="/carrito" element={<Carrito />} />

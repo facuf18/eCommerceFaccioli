@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import "./itemCount.css"
 
 const ItemCount = ({stock, initial, onAdd}) => {
 
@@ -24,12 +26,17 @@ const ItemCount = ({stock, initial, onAdd}) => {
     return (
                 <div>
                     <p className="card-text">Cantidad de productos: {contador}</p>
-                    <div className="btn-group">
-                        <button className="btn btn-outline-danger" onClick={restar}>-</button>
-                        <button className="btn btn-outline-danger" onClick={sumar}>+</button>
-                        
+                    <div className="counterButtons">
+                        <div className="btn-group">
+                            <button className="btn btn-outline-danger" onClick={restar}>-</button>
+                            <button className="btn btn-outline-danger" onClick={sumar}>+</button>
+                            
+                        </div>
+                        <button type="submit" className="btn btn-danger agregarButton" onClick={onAddItemCount}>Agregar al carrito</button>
+                        <Link to="/carrito">
+                            <button type="submit" className="btn btn-danger">Finalizar compra</button>
+                        </Link>
                     </div>
-                    <button type="submit" className="btn btn-danger ms-2" onClick={onAddItemCount}>Agregar al carrito</button>
                 </div>
     );
 }
