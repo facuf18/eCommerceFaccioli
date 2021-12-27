@@ -14,7 +14,7 @@ const ItemDetail = ({producto}) => {
                     <img src={producto.img} className="rounded-start img-card" alt="grafica"/>
                 </div>
                 <div className="col-md-8">
-                    <div className="card-body">
+                    <div className="card-body bodyPosition">
                         <h5 className="card-title">{producto.categoria}</h5>
                         <h5 className="card-title">{producto.marca} {producto.modelo}</h5>
                         <h1 className="card-text">${producto.precio}</h1>

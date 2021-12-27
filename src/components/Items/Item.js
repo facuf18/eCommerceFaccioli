@@ -3,7 +3,7 @@ import "./item.css"
 
 const Item = ({producto}) => {
     return (
-        <div className="card border">
+        <div className="card border cardItem">
             <img src={producto.img} className="card-img-top w-100" alt="grafica"></img>
             <div className="card-body">
                 <p className="card-title">{producto.categoria} {producto.marca} {producto.modelo}</p>
