@@ -1,10 +1,14 @@
 import ItemCount from "../Items/ItemCount"
 import "./itemDetail.css"
+import { useContexto } from "../Context/CartContext"
 
 const ItemDetail = ({producto}) => {
 
+    const { addItem } = useContexto();
+
     const mostrarCantidad = (cantidad) => {
         console.log(cantidad + " productos agregados al carrito");
+        addItem(producto, cantidad);
     }
 
     return (
