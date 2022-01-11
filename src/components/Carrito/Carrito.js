@@ -22,7 +22,7 @@ const Carrito = () => {
                             <td>{producto.marca} {producto.modelo}</td>
                             <td>{producto.cantidad}</td>
                             <td>${producto.precio}</td>
-                            <td><button className="btn btn-outline-danger" onClick={removeItem(producto.id)}>Borrar</button></td>
+                            <td><button className="btn btn-outline-danger" onClick={() => {removeItem(producto.id)}}>Borrar</button></td>
                         </tr>
                         )
                     })}
