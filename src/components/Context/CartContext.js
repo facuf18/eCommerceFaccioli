@@ -18,26 +18,34 @@ const CustomProvider = ({children}) => {
     }
 
     const addItem = (item, cantidad) => {
+
         if(isInCart(item.id)){
-            console.log(isInCart(item.id))
-            console.log("El producto ya fue agregado")
+
+            const copiaCarrito = [...carrito];
+            let itemInCart = copiaCarrito.find(p => p.id === item.id);
+            itemInCart.cantidad += cantidad;
+            setCarrito(copiaCarrito);
+            setCantidadTotal(cantidadTotal + cantidad)
 
         } else{
-            const copiaItem = {...item}
-            copiaItem.cantidad = cantidad;
-            setCantidadTotal(cantidad)
+            const itemConCantidad = {
+                ...item,
+                cantidad
+            }
 
-            const copia = [...carrito, copiaItem];
-            setCarrito(copia); 
+            setCarrito([...carrito, itemConCantidad]);
+            setCantidadTotal(cantidadTotal + cantidad);
         }
     }
 
-    const removeItem = (id) => {
+    const removeItem = (id, cantidad) => {
+        setCantidadTotal(cantidadTotal - cantidad)
         setCarrito(carrito.filter(item => item.id !== id));
     }
 
-    const clear = () => {
+    const clearCart = () => {
         setCarrito([]);
+        setCantidadTotal(0);
     }
 
     const valorDelContexto = {
@@ -45,7 +53,7 @@ const CustomProvider = ({children}) => {
         carrito,
         addItem,
         removeItem,
-        clear
+        clearCart
     }
 
     return (
