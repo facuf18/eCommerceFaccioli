@@ -34,7 +34,7 @@ const Carrito = () => {
                     {carrito.map ((producto) => {
                         return (
                         <tr>
-                            <td>{producto.marca} {producto.modelo}</td>
+                            <td className="text-uppercase">{producto.marca} {producto.modelo}</td>
                             <td>{producto.cantidad}</td>
                             <td>${producto.precio}</td>
                             {<td>${producto.cantidad*producto.precio}</td>}

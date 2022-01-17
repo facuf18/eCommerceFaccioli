@@ -19,8 +19,7 @@ const ItemDetail = ({producto}) => {
                 </div>
                 <div className="col-md-8">
                     <div className="card-body bodyPosition">
-                        <h5 className="card-title">{producto.categoria}</h5>
-                        <h5 className="card-title">{producto.marca} {producto.modelo}</h5>
+                        <h5 className="card-title text-uppercase">{producto.marca} {producto.modelo}</h5>
                         <h1 className="card-text">${producto.precio}</h1>
                         <ItemCount stock={5} initial={1} onAdd={mostrarCantidad}/>
                     </div>

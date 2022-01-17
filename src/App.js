@@ -15,8 +15,9 @@ const App = () => {
         {id:1, name:"Productos", href:"/productos"},
         {id:2, name:"MSI", href:"/marca/msi"},
         {id:3, name:"PALIT", href:"/marca/palit"},
-        {id:4, name:"Nosotros", href:"/nosotros"},
-        {id:5, name:"Contacto", href:"/contacto"}
+        {id:4, name:"ASUS", href:"/marca/asus"},
+        {id:5, name:"Nosotros", href:"/nosotros"},
+        {id:6, name:"Contacto", href:"/contacto"}
     ]
 
 

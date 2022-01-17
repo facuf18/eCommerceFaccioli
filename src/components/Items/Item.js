@@ -6,7 +6,7 @@ const Item = ({producto}) => {
         <div className="card border cardItem">
             <img src={producto.img} className="card-img-top w-100" alt="grafica"></img>
             <div className="card-body">
-                <p className="card-title">{producto.categoria} {producto.marca} {producto.modelo}</p>
+                <p className="card-title text-uppercase">{producto.marca} {producto.modelo}</p>
                 <h3 className="card-text">${producto.precio}</h3>
                 <Link className="card-link" to={`/producto/${producto.id}`}>Ver detalles</Link>
             </div>
