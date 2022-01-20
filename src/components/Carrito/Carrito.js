@@ -1,22 +1,36 @@
-import { useContexto } from "../Context/CartContext"
+import { useContexto } from "../Context/CartContext";
+import { dataBase } from "../../firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const Carrito = () => {
 
     const { carrito, removeItem, clearCart } = useContexto()
-
-    console.log(carrito);
-
-    const finalizarCompra = () => {
-        console.log("Compra finalizada");
-        clearCart();
-    }
 
     let total = 0;
     carrito.map(item => {
         return total += item.cantidad * item.precio;
     })
 
-    console.log(total)
+    const finalizarCompra = () => {
+        console.log("Compra finalizada");
+
+        const ventasCollection = collection(dataBase, "ventas");
+        addDoc(ventasCollection, {
+            buyer: {
+                name: "Facundo",
+                lastName: "Faccioli",
+                email: "facufaccioli18@gmail.com"
+            },
+            items: carrito,
+            date: serverTimestamp(),
+            total: total
+        })
+        .then((resultado) =>{
+            console.log(resultado);
+        })
+
+        clearCart();
+    }
 
     return (
         <div className="container">
