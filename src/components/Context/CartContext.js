@@ -18,7 +18,7 @@ const CustomProvider = ({children}) => {
     }
 
     const addItem = (item, cantidad) => {
-
+        
         if(isInCart(item.id)){
 
             const copiaCarrito = [...carrito];

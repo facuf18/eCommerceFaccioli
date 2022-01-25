@@ -7,7 +7,6 @@ const ItemDetail = ({producto}) => {
     const { addItem } = useContexto();
 
     const mostrarCantidad = (cantidad) => {
-        console.log(cantidad + " productos agregados al carrito");
         addItem(producto, cantidad);
     }
 

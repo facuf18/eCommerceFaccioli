@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
 
         getDoc(consultaDoc)
             .then((res) => {
-                setItem(res.data());
+                setItem({id : res.id, ...res.data()});
             })
             .catch((error) => {
                 console.log(error);

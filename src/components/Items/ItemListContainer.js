@@ -36,9 +36,7 @@ const ItemListContainer = () => {
                 console.log(error);
             }) 
         }
-
     }, [marca])
-
 
     return (
         <>

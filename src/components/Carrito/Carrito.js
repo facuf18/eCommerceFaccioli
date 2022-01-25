@@ -26,7 +26,7 @@ const Carrito = () => {
             total: total
         })
         .then((resultado) =>{
-            console.log(resultado);
+            console.log(resultado.id);
         })
 
         clearCart();
