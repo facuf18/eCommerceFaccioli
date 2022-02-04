@@ -53,7 +53,7 @@ const CustomProvider = ({children}) => {
         carrito,
         addItem,
         removeItem,
-        clearCart
+        clearCart,
     }
 
     return (
