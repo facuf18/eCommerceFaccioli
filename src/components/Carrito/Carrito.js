@@ -8,21 +8,20 @@ const Carrito = () => {
 
     const { carrito, removeItem, clearCart } = useContexto();
     const [buyerData, setBuyerData] = useState({});
+    const [showForm, setShowForm] = useState(true);
+
+    const handleBuyerData = (newBuyer) => {
+        setBuyerData(newBuyer);
+        setTimeout(() => setShowForm(false), 2000);
+    }
 
     let total = 0;
     carrito.map(item => {
         return total += item.cantidad * item.precio;
     })
 
-    const handleBuyerData = (newBuyer) => {
-        setBuyerData(newBuyer);
-    }
-
-    console.log(buyerData);
-
     const finalizarCompra = () => {
-        console.log("Compra finalizada");
-
+        
         const ventasCollection = collection(dataBase, "ventas");
         addDoc(ventasCollection, {
             buyer: buyerData,
@@ -33,8 +32,8 @@ const Carrito = () => {
         .then((resultado) =>{
             console.log(resultado.id);
         })
-        
         clearCart();
+
     }
 
     return (
@@ -44,15 +43,17 @@ const Carrito = () => {
             <div>
             <table className="table align-middle table-striped">
                 <thead>
-                    <th scope="col">Producto</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Subtotal</th>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {carrito.map ((producto) => {
                         return (
-                        <tr>
+                        <tr key={producto.id}>
                             <td className="text-uppercase">{producto.marca} {producto.modelo}</td>
                             <td>{producto.cantidad}</td>
                             <td>${producto.precio}</td>
@@ -62,15 +63,24 @@ const Carrito = () => {
                         )
                     })}
                 </tbody>
-            </table> 
+            </table>
             <div className="d-flex flex-row align-items-center">
                 <p className="display-6 col-md-10">Precio total: ${total}</p>
             </div>
-            <CartForm addBuyer={handleBuyerData}/>
+            {(showForm ? 
+            <>
+                <div className="d-flex justify-content-center">
+                    <CartForm addBuyer={handleBuyerData}/>
+                </div>  
+                <div className="d-flex flex-row-reverse">
+                    <button className="btn btn-danger col-md-2 me-3" onClick={clearCart}>Vaciar carrito</button>
+                </div> 
+            </> : 
             <div className="d-flex flex-row-reverse">
                 <button className="btn btn-danger col-md-2" onClick={finalizarCompra}>Finalizar compra</button>
                 <button className="btn btn-danger col-md-2 me-3" onClick={clearCart}>Vaciar carrito</button>
             </div>
+            )}
             </div>) : <p>No hay productos en el carrito</p>}
         </div>
     )

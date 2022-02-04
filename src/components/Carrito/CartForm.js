@@ -1,6 +1,11 @@
+import "./cartForm.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useState } from "react";
 
-const CartForm = ({ setBuyerData }) => {
+
+const CartForm = ({ addBuyer }) => {
+
+  const [formSent, setFormSent] = useState(false);
 
   return (
   <Formik
@@ -10,8 +15,10 @@ const CartForm = ({ setBuyerData }) => {
         email: ''
       }}
     onSubmit = {(values, { resetForm }) => {
+        addBuyer(values);
         resetForm();
-        setBuyerData(values);
+        setFormSent(true);
+        setTimeout(() => setFormSent(false), 2000);
       }} 
     validate = {(values) => {
           let errores = {};
@@ -41,19 +48,19 @@ const CartForm = ({ setBuyerData }) => {
         }}
   >
     {( { errors } ) => (
-      <Form className="row g-3">
-        <div className="col-md-2">
+      <Form className="card col-lg-6 mb-5">
+        <div className="my-2 mx-3">
           <label htmlFor="nombre" className="form-label">Nombre</label>
           <Field 
-            type="text" 
-            className="form-control" 
+            type="text"
+            className="form-control"
             id="nombre" 
             name="nombre"
             placeholder="Ingrese su nombre"
             />
-          <ErrorMessage name="nombre" component={() => (<div>{errors.nombre}</div>)} />
+          <ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
         </div>
-        <div className="col-md-2">
+        <div className="my-2 mx-3">
             <label htmlFor="apellido" className="form-label">Apellido</label>
             <Field 
               type="text" 
@@ -61,9 +68,9 @@ const CartForm = ({ setBuyerData }) => {
               id="apellido" 
               name="apellido"
               placeholder="Ingrese su apellido"/>
-            <ErrorMessage name="apellido" component={() => (<div>{errors.apellido}</div>)} />
+            <ErrorMessage name="apellido" component={() => (<div className="error">{errors.apellido}</div>)} />
           </div>
-        <div className="col-md-3">
+        <div className="my-2 mx-3">
             <label htmlFor="email" className="form-label">Email</label>
             <Field 
               type="text" 
@@ -71,13 +78,15 @@ const CartForm = ({ setBuyerData }) => {
               id="email" 
               name="email"
               placeholder="Ingrese su email"/>
-            <ErrorMessage name="email" component={() => (<div>{errors.email}</div>)} />
+            <ErrorMessage name="email" component={() => (<div className="error">{errors.email}</div>)} />
         </div>
-        <button type="submit">Enviar</button>
+        <div className="my-2 mx-3">
+          <button type="submit" className="btn btn-outline-danger">Enviar</button>
+          {formSent && <p className="correct">Formulario enviado con éxito!</p>}
+        </div>
       </Form>
     )}
   </Formik>
-  
   );
 };
 
