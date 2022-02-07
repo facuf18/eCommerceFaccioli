@@ -6,9 +6,8 @@ export const CartWidget = () => {
     const { cantidadTotal } = useContexto();
 
     return (
-        <h4 className="nav-link cartIcon">
-            <BsFillCartFill/>
-            {cantidadTotal}
-        </h4>
+        <h5 className="nav-link">
+            <BsFillCartFill/>{cantidadTotal}
+        </h5>
     );
 }

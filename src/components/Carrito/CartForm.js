@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 
 
-const CartForm = ({ addBuyer }) => {
+const CartForm = ({ addBuyer, showForm }) => {
 
   const [formSent, setFormSent] = useState(false);
 
@@ -18,26 +18,23 @@ const CartForm = ({ addBuyer }) => {
         addBuyer(values);
         resetForm();
         setFormSent(true);
-        setTimeout(() => setFormSent(false), 2000);
-      }} 
+        setTimeout(() => {setFormSent(false); showForm(false)}, 2000);
+      }}
     validate = {(values) => {
           let errores = {};
 
-          //Validacion nombre
           if(!values.nombre){
             errores.nombre = 'Por favor, ingrese un nombre'
           } else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.nombre)){
             errores.nombre = 'El nombre solo puede contener letras y espacios'
           }
 
-          //Validacion apellido
           if(!values.apellido){
             errores.apellido = 'Por favor, ingrese un apellido'
           } else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.apellido)){
             errores.apellido = 'El apellido solo puede contener letras y espacios'
           }
 
-          //Validacion email
           if(!values.email){
 						errores.email = 'Por favor ingresa un email'
 					} else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)){

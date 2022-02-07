@@ -3,10 +3,11 @@ import { dataBase } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import CartForm from "./CartForm";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Carrito = () => {
 
-    const { carrito, removeItem, clearCart } = useContexto();
+    const { carrito, removeItem, clearCart, setIdCompra } = useContexto();
     const [buyerData, setBuyerData] = useState({});
     const [showForm, setShowForm] = useState(true);
 
@@ -30,7 +31,7 @@ const Carrito = () => {
             total: total
         })
         .then((resultado) =>{
-            console.log(resultado.id);
+            setIdCompra(resultado.id)
         })
         clearCart();
 
@@ -70,15 +71,18 @@ const Carrito = () => {
             {(showForm ? 
             <>
                 <div className="d-flex justify-content-center">
-                    <CartForm addBuyer={handleBuyerData}/>
-                </div>  
+                    <CartForm addBuyer={handleBuyerData} showForm={setShowForm}/>
+                </div>
+                <p>Para poder finalizar la compra debe completar los datos del formulario.</p>
                 <div className="d-flex flex-row-reverse">
                     <button className="btn btn-danger col-md-2 me-3" onClick={clearCart}>Vaciar carrito</button>
                 </div> 
             </> : 
             <div className="d-flex flex-row-reverse">
-                <button className="btn btn-danger col-md-2" onClick={finalizarCompra}>Finalizar compra</button>
-                <button className="btn btn-danger col-md-2 me-3" onClick={clearCart}>Vaciar carrito</button>
+                <Link className="" to="/postcompra">
+                    <button className="btn btn-danger" onClick={finalizarCompra}>Finalizar compra</button>
+                </Link>
+                <button className="btn btn-outline-danger col-md-2 me-3" onClick={clearCart}>Vaciar carrito</button>
             </div>
             )}
             </div>) : <p>No hay productos en el carrito</p>}

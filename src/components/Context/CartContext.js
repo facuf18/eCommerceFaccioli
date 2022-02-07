@@ -12,6 +12,7 @@ const CustomProvider = ({children}) => {
 
     const [cantidadTotal, setCantidadTotal] = useState(0);
     const [carrito, setCarrito] = useState([]);
+    const [idCompra, setIdCompra] = useState("");
 
     const isInCart = (id) => {
         return carrito.some(item => item.id === id);
@@ -51,6 +52,8 @@ const CustomProvider = ({children}) => {
     const valorDelContexto = {
         cantidadTotal,
         carrito,
+        idCompra,
+        setIdCompra,
         addItem,
         removeItem,
         clearCart,

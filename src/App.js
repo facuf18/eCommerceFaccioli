@@ -8,6 +8,7 @@ import Carrito from "./components/Carrito/Carrito";
 import Nosotros from "./components/Nosotros/Nosotros"
 import Contacto from "./components/Contacto/Contacto"
 import CustomProvider from "./components/Context/CartContext";
+import PostCompra from "./components/PostCompra/PostCompra";
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
                         <Route path="/nosotros" element={<Nosotros />} />
                         <Route path="/contacto" element={<Contacto />} />
                         <Route path="/carrito" element={<Carrito />} />
+                        <Route path="/postcompra" element={<PostCompra />} />
                     </Routes>
                 </main>
                 <Footer />
